@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<script>
+  <pageProtocol>
+    <page name="MainPage" Action="UnFocus" />
+    <page name="MainPage" Action="SearchNumber" />
+    <page name="MainPage" Action="SearchText" />
+  </pageProtocol>
+  <languageSettings>
+    <!--<language key="kl">
+      <MainPage Text="Siq" Numeric="07631" />
+    </language>-->
+    <language key="en-US">
+      <MainPage Text="Daniel" Numeric="073" />
+    </language>
+    <language key="ar">
+      <MainPage Text="محمد" Numeric="070" />
+    </language>
+    <language key="de">
+      <MainPage Text="Emma" Numeric="076" />
+    </language>
+  </languageSettings>
+</script>

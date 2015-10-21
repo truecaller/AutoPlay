@@ -1,0 +1,44 @@
+﻿<Page
+    x:Class="TruePhonebook.SelectLanguage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <ListView
+            Name="LanguageList"
+			DisplayMemberPath="Name"
+			BorderThickness="0"
+			Foreground="#122E54"
+			FontSize="25"
+			ItemsSource="{Binding Languages}"
+			ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+			ScrollViewer.VerticalScrollBarVisibility="Hidden"
+            Margin="12,0"
+            SelectionChanged="OnLanguageSelected"
+			>
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem" >
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                    <Setter Property="Height" Value="20" />
+                    <Setter Property="Margin" Value="0,12,0,0" />
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="ListViewItem">
+                                <ListViewItemPresenter
+                                    FontFamily="{StaticResource RegularFont}"
+                                    FontSize="18"
+                                    Foreground="{StaticResource TextOnLightBackgroungSecondary}"
+                                    SelectedBackground="Transparent"
+                                    SelectedForeground="#0091EA"
+                                    SelectedPointerOverBackground="Transparent" />
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </ListView.ItemContainerStyle>
+        </ListView>
+    </Grid>
+</Page>

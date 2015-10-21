@@ -1,0 +1,41 @@
+﻿<Application
+    x:Class="TruePhonebook.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:strings="using:TruePhonebook.Strings"
+    xmlns:converters="using:TruePhonebook.Converters"
+    RequestedTheme="Light">
+    <Application.Resources>
+        <ResourceDictionary>
+            <strings:StringResources x:Key="Strings" />
+
+            <converters:ArrowFlowDirectionConverter x:Key="ArrowFlowDirectionConverter"/>
+            <converters:NumberTypeConverter x:Key="NumberTypeConverter"/>
+            <converters:NumberFormatConverter x:Key="NumberFormatConverter"/>
+
+            <x:Double x:Key="TextSize20">15</x:Double>
+            
+            <FontFamily x:Key="RegularFont">Segoe WP</FontFamily>
+            
+            <Color x:Key="GrayGradientColor">#122E54</Color>
+            
+            <SolidColorBrush x:Key="TextOnLightBackgroundPrimary" Color="{StaticResource GrayGradientColor}" Opacity="1" />
+            <SolidColorBrush x:Key="TextOnLightBackgroungSecondary" Color="{StaticResource GrayGradientColor}" Opacity="0.6" />
+            <SolidColorBrush x:Key="LinesSeparators" Color="{StaticResource GrayGradientColor}" Opacity="0.20" />
+            
+            <Style x:Key="TextBlockStyle" TargetType="TextBlock">
+                <Setter Property="FontFamily" Value="{StaticResource RegularFont}"/>
+                <Setter Property="FontSize" Value="{StaticResource TextSize20}"/>
+                <Setter Property="FontWeight" Value="SemiBold" />
+                <Setter Property="Foreground" Value="{StaticResource TextOnLightBackgroundPrimary}"/>
+            </Style>
+
+            <Style x:Key="CommandBarStyle" TargetType="CommandBar">
+                <Setter Property="ClosedDisplayMode" Value="Compact" />
+                <Setter Property="Background" Value="#1E1F1E" />
+                <Setter Property="RequestedTheme" Value="Dark" />
+                <Setter Property="Opacity" Value="0.99" />
+            </Style>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

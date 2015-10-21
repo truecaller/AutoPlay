@@ -1,0 +1,71 @@
+﻿<#@ template debug="false" hostspecific="true" language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ assembly name="System.Xml" #>
+<#@ assembly name="System.Xml.Linq" #>
+<#@ import namespace="System.IO" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Xml.Linq" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="Microsoft.CSharp" #>
+<#@ output extension=".cs" #>
+<#
+	var reswPath = @"en-US\Resources.resw";
+
+	var provider = new CSharpCodeProvider();
+	var className = provider.CreateEscapedIdentifier(Path.GetFileNameWithoutExtension(Host.TemplateFile));
+
+	Directory.SetCurrentDirectory(Host.ResolvePath(""));
+	 
+	if (File.Exists(reswPath))
+	{ 
+#> 
+//------------------------------------------------------------------------------
+//     Add a global shortcut in MSVS for beeing able to generate this file after 
+//     you modify localization strings from resource files use:
+//     MENU / TOOLS / OPTIONS / Keyboard
+//     Add Command 'Build.TransformAllT4Templates' with shortcut Ctrl+Shift+Alt+T
+//------------------------------------------------------------------------------
+
+using Windows.ApplicationModel.Resources; 
+
+namespace TruePhonebook.Strings
+{
+    public class StringResources
+	{
+	  static StringResources()
+		{
+			AllKeys = new LocalizedStrings();
+		}
+
+		public static LocalizedStrings AllKeys { get; }
+
+		public LocalizedStrings Keys => AllKeys;
+	}
+
+    public class <#= className #>
+	{
+		static readonly ResourceLoader ResourceLoader = ResourceLoader.GetForViewIndependentUse(); 	
+<#
+		foreach (string name in GetResourceKeys(reswPath).Where(n => !n.Contains(".")))
+		{
+#>  
+		public string <#= provider.CreateEscapedIdentifier(name) #> => ResourceLoader.GetString("<#= name #>");
+<#
+		}
+#> 
+	}
+}
+<#
+	}
+	else
+		throw new FileNotFoundException(); 
+#>
+<#+
+	
+    static IEnumerable<string> GetResourceKeys(string filePath)
+	{
+		var doc = XDocument.Load(filePath);
+		return doc.Root.Elements("data").Select(e => e.Attribute("name").Value);
+	}
+
+#>
