@@ -101,7 +101,7 @@
     <Page.BottomAppBar>
         <CommandBar x:Name="appBar" Style="{StaticResource CommandBarStyle}">
             <CommandBar.SecondaryCommands>
-                <AppBarButton Label="AutoPlay" Click="OnAutoPlayClicked" />
+                <AppBarButton Name="AutoPlayButton" Label="AutoPlay" Click="OnAutoPlayClicked" Visibility="Collapsed" />
                 <AppBarButton Label="Select Language" Click="OnSelectLanguageClicked"/>
             </CommandBar.SecondaryCommands>
         </CommandBar>

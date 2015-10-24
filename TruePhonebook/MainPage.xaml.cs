@@ -3,8 +3,6 @@
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Input;
-using AutoPlay;
-
 namespace TruePhonebook
 {
     /// <summary>
@@ -27,6 +25,10 @@ namespace TruePhonebook
 
             Loaded += (sender, args) =>
             {
+#if DEBUG
+                AutoPlayButton.Visibility = Visibility.Visible;
+#endif
+
                 ViewModel.FilterContacts();
             };
         }
@@ -38,7 +40,9 @@ namespace TruePhonebook
 
         async void OnAutoPlayClicked(object sender, RoutedEventArgs e)
         {
-            await AutoPlayManager.RunAsync();
+#if DEBUG
+            await AutoPlay.AutoPlayManager.RunAsync();
+#endif
         }
 
         void OnSelectLanguageClicked(object sender, RoutedEventArgs e)

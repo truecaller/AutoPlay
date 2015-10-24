@@ -208,7 +208,7 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
-  <Import Project="..\AutoPlay\AutoPlay.projitems" Label="Shared" />
+  <Import Project="..\AutoPlay\AutoPlay.projitems" Label="Shared" Condition="'$(Configuration)' == 'Debug'" />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>
